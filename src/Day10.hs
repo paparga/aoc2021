@@ -22,16 +22,16 @@ getLineScore xs = case foldl' checkLine (Right []) xs of
 
 checkLine :: Either Int [Char] -> Char -> Either Int [Char]
 checkLine (Left i) curr = Left i
-checkLine (Right []) curr = return [curr]
+checkLine (Right []) curr = Right [curr]
 checkLine (Right (lastP : xs)) curr = case (lastP, curr) of
-    ('[', ']') -> return xs
-    ('(', ')') -> return xs
-    ('{', '}') -> return xs
-    ('<', '>') -> return xs
-    (_, '[') -> return (curr : lastP : xs)
-    (_, '(') -> return (curr : lastP : xs)
-    (_, '{') -> return (curr : lastP : xs)
-    (_, '<') -> return (curr : lastP : xs)
+    ('[', ']') -> Right xs
+    ('(', ')') -> Right xs
+    ('{', '}') -> Right xs
+    ('<', '>') -> Right xs
+    (_, '[') -> Right (curr : lastP : xs)
+    (_, '(') -> Right (curr : lastP : xs)
+    (_, '{') -> Right (curr : lastP : xs)
+    (_, '<') -> Right (curr : lastP : xs)
     (_, ']') -> Left 57
     (_, ')') -> Left 3
     (_, '}') -> Left 1197
