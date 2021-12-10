@@ -1,5 +1,5 @@
-module Day8 (
-    day8Main,
+module Day9 (
+    day9Main,
 ) where
 
 import Conduit
@@ -63,11 +63,11 @@ getLineScore (last, curr, next) = foldr foldFn 0 indexed
 
 -- Main
 
-day8Main :: IO ()
-day8Main = do
+day9Main :: IO ()
+day9Main = do
     score <-
         runConduitRes $
-            sourceFile "day8.txt"
+            sourceFile "day08.txt"
                 .| conduitDigits
                 .| conduitThreeRows Nothing
                 .| mapC getLineScore

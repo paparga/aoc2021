@@ -1,7 +1,7 @@
 module Main where
 
-import Day8
+import Day9
 import Protolude
 
 main :: IO ()
-main = day8Main
+main = day9Main
